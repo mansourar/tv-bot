@@ -14,15 +14,15 @@ app = Flask(__name__)
 api = Api(app)
 
 
-api.add_resource( ping.Ping          , "/" )
-api.add_resource( tl.TradesList      , "/TradesList" )
-api.add_resource( so.SalesLimitOrder , "/LimitSalesOrder" )
-api.add_resource( bo.BuyLimitOrder   , "/LimitBuyOrder" )
-api.add_resource( tf.TradeFees       , "/TradeFees" )
-api.add_resource( ba.Balance         , "/Balance" )
-api.add_resource( ot.OpenTradesList  , "/OpenTradesList" )
-api.add_resource( co.CancelOrderByID  , "/CancelOrderByID" )
+api.add_resource(ping.Ping, "/")
+api.add_resource(tl.TradesList, "/TradesList")
+api.add_resource(so.SalesLimitOrder, "/LimitSalesOrder")
+api.add_resource(bo.BuyLimitOrder, "/LimitBuyOrder")
+api.add_resource(tf.TradeFees, "/TradeFees")
+api.add_resource(ba.Balance, "/Balance")
+api.add_resource(ot.OpenTradesList, "/OpenTradesList")
+api.add_resource(co.CancelOrderByID, "/CancelOrderByID")
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host=0.0.0., port=80)
+    app.run(debug=True, host="0.0.0.0", port=80)
