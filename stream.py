@@ -1,6 +1,7 @@
 import asyncio
 import requests
 import json
+import cfg
 from binance import AsyncClient, BinanceSocketManager
 
 
@@ -20,7 +21,6 @@ async def main():
         while True:
             res = await tscm.recv()
 
-           
             if res["e"] != "executionReport":
                 continue
             print("Json Type : " + res["e"])
@@ -39,17 +39,14 @@ async def main():
             print(f"Sold Price : " + res["p"])
             print(f"Buy Price : {Price}")
 
-            url = "http://127.0.0.1:5000/LimitBuyOrder"
+            url = f"{cfg.API_URL}/LimitBuyOrder"
             payload = {
                 "Username": "admin",
                 "Password": "1",
-                "AssetPair": "BTCBUSD",
+                "AssetPair": cfg.ASSET_PAIR,
                 "Price": Price
             }
             headers = {'Content-Type': 'application/json'}
-            print()
-            print(payload)
-
             response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
             print()
             print(response.text)
