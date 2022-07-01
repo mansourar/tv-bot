@@ -9,6 +9,7 @@ class SalesLimitOrder(Resource):
 
     def post(self):
         try:
+            print(request.data)
             self.data = json.loads(request.data)
             self.order_type = self.data["strategy"]["order_action"]
             self.order_price = self.data["strategy"]["order_price"]
